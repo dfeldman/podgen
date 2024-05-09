@@ -91,8 +91,8 @@ class PodcastManager:
 
     def generate_web_page(self):
         sorted_episodes = sorted(self.podcast_data['episodes'], key=lambda x: x['pub_date'], reverse=True)
-        recent_episodes = sorted_episodes[:-self.num_episodes]
-
+        recent_episodes = sorted_episodes[:self.num_episodes]
+        print("Got recent episodes", recent_episodes)
         html = f"""
         <!DOCTYPE html>
         <html>

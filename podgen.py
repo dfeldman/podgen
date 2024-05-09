@@ -8,7 +8,8 @@ from elevenlabs.client import ElevenLabs
 #from pyrubberband import time_stretch
 # Define the list of voices, ambiance MP3s, and global ambiance MP3 (provided by you)
 voices = {
-    "Julie": "vVypMgcNd4WcVJdE5KAS",
+    #"Julie": "vVypMgcNd4WcVJdE5KAS",
+    "Julie": "AcGHtn5NK8C0VkbCsIjm",
    # "Dave": "0aj9guxInFB1t3JOl4J6",
    "Dave": "Ybqj6CIlqb6M85s9Bl4n",
 }
@@ -235,8 +236,10 @@ def add_intro_outro(mixed_audio):
     intro_audio = AudioSegment.from_mp3("intro.mp3")
     outro_audio = AudioSegment.from_mp3("outro.mp3")
 
-    mixed_audio = intro_audio.append(mixed_audio, crossfade=0)
-    mixed_audio = mixed_audio.append(outro_audio, crossfade=20000)
+    intro_audio = intro_audio + AudioSegment.silent(duration=500)
+    mixed_audio = intro_audio.append(mixed_audio, crossfade=100)
+    mixed_audio = mixed_audio + AudioSegment.silent(duration=500)
+    mixed_audio = mixed_audio.append(outro_audio, crossfade=1000)
 
     return mixed_audio
 
