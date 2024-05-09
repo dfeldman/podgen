@@ -1,0 +1,5 @@
+*.mp3
+elevenlabs_api_key
+segments/
+sounds/
+amazon_api_keys
